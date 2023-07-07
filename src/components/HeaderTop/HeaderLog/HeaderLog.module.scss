@@ -1,0 +1,10 @@
+@use "../../../scss/util/" as *;
+
+&__login {
+  justify-self: self-end;
+  white-space: nowrap;
+
+  @include bp-down("992") {
+    justify-self: revert;
+  }
+}

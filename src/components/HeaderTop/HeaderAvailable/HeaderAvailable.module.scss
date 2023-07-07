@@ -1,0 +1,44 @@
+@use "../../../scss/util/" as *;
+
+.root {
+  justify-self: self-start;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--white-color);
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  margin-right: rem(3);
+
+  @include bp-down("876") {
+    display: none;
+  }
+}
+
+.icon {
+  display: none;
+  margin-right: rem(3);
+
+  svg {
+    position: relative;
+    width: rem(14);
+    height: rem(14);
+    fill: currentcolor;
+  }
+
+  @include bp-down("876") {
+    display: inline-flex;
+  }
+}
+
+.tel {
+  font: var(--small-bold);
+}

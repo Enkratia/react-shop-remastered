@@ -1,0 +1,26 @@
+@use "../../../scss/util/" as *;
+
+&__currency {
+  white-space: nowrap;
+}
+
+.currency {
+  display: flex;
+  align-items: center;
+  width: rem(105);
+
+  &__flag {
+    margin-right: rem(6.5);
+    width: rem(20);
+    height: rem(12);
+  }
+
+  &__selected {
+    margin-right: rem(3);
+  }
+
+  svg {
+    width: rem(8);
+    height: rem(8);
+  }
+}
