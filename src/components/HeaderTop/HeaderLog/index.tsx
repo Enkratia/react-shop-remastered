@@ -1,19 +1,20 @@
 import React from "react";
 
+// Styles
+import s from "./HeaderLog.module.scss";
+import cs from "../../scss/global/_index.module.scss";
+
+// Images
+import { Person } from "../../../iconComponents";
+// import FlagUsa from "../../../assets/img/flag-usa.svg";
+
 export const HeaderLog: React.FC = () => {
   return (
-    <div className="header-top__login login" id="login">
-      <button className="login__btn" id="login-btn-in">
-        Log in
-      </button>
-
-      <button className="login__btn" id="login-btn-register">
-        Register
-      </button>
-
-      <svg className="login__icon" xmlns="http://www.w3.org/2000/svg">
-        <use href="./img/sprite.svg#person"></use>
-      </svg>
+    <div className={s.root} id="login">
+      <button className={s.loginBtn}>Log in</button>
+      <span className={s.divider}>/</span>
+      <button className={s.registerBtn}>Register</button>
+      <Person className={s.personIcon} />
     </div>
   );
 };

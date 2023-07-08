@@ -6,7 +6,7 @@ import { store } from "./redux/store";
 
 import App from "./App";
 
-import "./scss/global/_index.scss";
+// import "./scss/global/_index.scss";
 
 const rootElem = document.getElementById("root") as HTMLDivElement;
 

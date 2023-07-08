@@ -1,44 +1,38 @@
 import React from "react";
 
+// Styles
+import s from "./HeaderCurrency.module.scss";
+// import cs from "../../scss/global/_index.module.scss";
+
+// Images
+import FlagUsa from "../../../assets/img/flag-usa.svg";
+import { AngleDown } from "../../../iconComponents";
+
 export const HeaderCurrency: React.FC = () => {
   return (
-    <div className="header-top__currency currency">
-      <img className="currency__flag" src="./img/flag-usa.svg" alt="" aria-hidden="true" />
+    <div className={s.root}>
+      <img className={s.flag} src={FlagUsa} alt="Flag" aria-hidden="true" />
 
-      <div
-        className="custom-select header-top__select"
-        id="custom-select"
-        role="listbox"
-        tabIndex={0}>
-        <div className="custom-select__head">
-          <span
-            className="custom-select__selected header-top__selected currency__selected"
-            id="custom-select-selected">
-            Eng / $
-          </span>
-
-          <svg className="custom-select__icon" xmlns="http://www.w3.org/2000/svg">
-            <use href="./img/sprite.svg#angle-down"></use>
-          </svg>
+      <div className={s.select} role="listbox" tabIndex={0}>
+        <div className={s.selectHead}>
+          <span className={s.selectSelected}>Eng / $</span>
+          <AngleDown aria-hidden="true" />
         </div>
 
-        <div className="custom-select__inner-wrapper">
-          <ul
-            className="custom-select__list"
-            id="custom-select-list"
-            data-overlayscrollbars-initialize>
+        <div className={s.selectWrapper}>
+          <ul className={s.selectList} data-overlayscrollbars-initialize>
             <li
-              className="custom-select__item custom-select__item--active"
+              className={`${s.selectItem} ${s.selectItemActive}`}
               role="option"
               aria-selected="true">
               Eng / $
             </li>
 
-            <li className="custom-select__item" role="option" aria-selected="false">
+            <li className={`${s.selectItem}`} role="option" aria-selected="false">
               Ru / &#8381;
             </li>
 
-            <li className="custom-select__item" role="option" aria-selected="false">
+            <li className={`${s.selectItem}`} role="option" aria-selected="false">
               Eu / &#8364;
             </li>
           </ul>

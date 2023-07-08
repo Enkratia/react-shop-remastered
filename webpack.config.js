@@ -1,4 +1,5 @@
 const path = require("path");
+const loaderUtils = require("loader-utils");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -24,6 +25,28 @@ const optimization = () => {
 
 const filename = (ext) => (isDev ? `[name].${ext}` : `[name].[contenthash].${ext}`);
 
+const getLocalIdent = (context, localIdentName, localName) => {
+  const base = path.parse(context.resourcePath)?.name?.replace(/\.module/, "");
+
+  const hasRootModifier = localName[4] === "_";
+
+  const hash = loaderUtils.getHashDigest(
+    path.posix.relative(context.rootContext, context.resourcePath) + localName,
+    "md5",
+    "base64",
+    5,
+  );
+
+  if (localName.startsWith("root")) {
+    if (hasRootModifier) {
+      return `${base}__${localName.replace("root", "")}--${hash}`;
+    }
+    return `${base}--${hash}`;
+  }
+
+  return `${base}_${localName}--${hash}`;
+};
+
 module.exports = {
   context: path.resolve(__dirname, "src"),
   entry: {
@@ -39,7 +62,6 @@ module.exports = {
     extensions: [".js", ".jsx", ".ts", ".tsx", ".css", ".png", ".json"],
     alias: {
       "@src": path.resolve(__dirname, "src"),
-      // "@models": path.resolve(__dirname, "./src/models"),
     },
   },
   optimization: optimization(),
@@ -60,7 +82,22 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: "css-loader",
+            options: {
+              modules: {
+                getLocalIdent,
+              },
+            },
+          },
+          {
+            loader: "sass-loader",
+          },
+        ],
       },
       {
         test: /\.(png|jpg|svg|gif|ico)$/,

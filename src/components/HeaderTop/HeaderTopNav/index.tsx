@@ -1,37 +1,40 @@
 import React from "react";
 
+// Styles
+import s from "./HeaderTopNav.module.scss";
+
+// Images
+import { Layouts } from "../../../iconComponents";
+
 export const HeaderTopNav: React.FC = () => {
   return (
-    <nav className="header-top__nav top-nav" id="top-nav">
-      <button className="top-nav__button" id="top-nav-button" aria-label="Show info menu.">
-        <svg xmlns="http://www.w3.org/2000/svg">
-          <use href="./img/sprite.svg#layouts"></use>
-        </svg>
+    <nav className={s.root}>
+      {/* <button className={s.button} aria-label="Show info menu.">
+        <Layouts />
+        Info
+      </button> */}
 
-        <span className="top-nav__button-text">Info</span>
-      </button>
-
-      <ul className="top-nav__list">
-        <li className="top-nav__item">
-          <a href="./single-post.html" className="top-nav__link">
+      <ul className={s.list}>
+        <li className={s.item}>
+          <a href="./single-post.html" className={s.link}>
             Delivery & returns
           </a>
         </li>
 
-        <li className="top-nav__item">
-          <a href="./track-order.html" className="top-nav__link">
+        <li className={s.item}>
+          <a href="./track-order.html" className={s.link}>
             Track order
           </a>
         </li>
 
-        <li className="top-nav__item">
-          <a href="./blog.html" className="top-nav__link">
+        <li className={s.item}>
+          <a href="./blog.html" className={s.link}>
             Blog
           </a>
         </li>
 
-        <li className="top-nav__item">
-          <a href="./contacts.html" className="top-nav__link">
+        <li className={s.item}>
+          <a href="./contacts.html" className={s.link}>
             Contacts
           </a>
         </li>
