@@ -12,7 +12,7 @@
     margin-inline: rem(15);
   }
 
-  &--40 {
+  &40 {
     @include bp-up("1325") {
       margin-inline: auto;
     }
@@ -30,7 +30,7 @@
     }
   }
 
-  &--narrow {
+  &Narrow {
     max-width: rem(810);
 
     @include bp-up("885") { // 810 + 30 + 30 + 15(scrollbar)
@@ -44,5 +44,137 @@
     @include bp-down("576") {
       margin-inline: rem(15);
     }
+  }
+}
+
+.input {
+  outline: none;
+  border: 1px solid var(--gray400-color);
+  border-radius: rem(4);
+  padding: rem(16);
+  padding-top: rem(10);
+  padding-bottom: rem(11);
+  font: var(--small-regular);
+  color: var(--gray800-color);
+
+  &::placeholder {
+    font: inherit;
+    color: var(--gray600-color);
+  }
+
+  &-wrapper {
+    position: relative;
+
+    &::before {
+      content: "Please provide a valid input.";
+      position: absolute;
+      left: 0;
+      top: calc(100% + rem(4));
+      font: var(--extrasmall-regular);
+      color: var(--danger-color);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: rem(14);
+      top: 50%;
+      width: rem(16);
+      height: rem(16);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-50%);
+      transition: all 0.3s;
+    }
+
+    &--warning {
+      &::before {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      &::after {
+        background-image: url("../../assets/img/warning.svg");
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .input {
+        border-color: var(--danger-color);
+      }
+
+      &[data-validity="email"] {
+        &::before {
+          content: "Email must contain «@» and «.»";
+        }
+      }
+
+      &[data-validity="pass-length"] {
+        &::before {
+          content: "Password must contain at least 6 characters.";
+        }
+
+        &::after {
+          content: none;
+        }
+      }
+
+      &[data-validity="pass-confirm"] {
+        &::before {
+          content: "Passwords do not match.";
+        }
+
+        &::after {
+          content: none;
+        }
+      }
+    }
+
+    &--success {
+      &::before {
+        content: "Looks good!";
+        color: var(--success-color);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      &::after {
+        background-image: url("../../assets/img/success.svg");
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .input {
+        border-color: var(--success-color);
+      }
+
+      &[data-validity^="pass-"] {
+        &::after {
+          content: none;
+        }
+      }
+    }
+  }
+
+  &--password {
+    padding-right: rem(48);
+
+    &::placeholder {
+      font-size: rem(30);
+      letter-spacing: rem(-0.2);
+      color: var(--gray800-color);
+      transform: translateY(rem(5));
+    }
+  }
+
+  &:focus {
+    border-color: var(--input-hover-color);
+    box-shadow: var(--main-shadow);
   }
 }

@@ -59,5 +59,13 @@
     "react-redux": "^8.1.1",
     "react-router-dom": "^6.14.1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Enkratia/react-shop-remastered.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Enkratia/react-shop-remastered/issues"
+  },
+  "homepage": "https://github.com/Enkratia/react-shop-remastered#readme",
   "description": ""
 }

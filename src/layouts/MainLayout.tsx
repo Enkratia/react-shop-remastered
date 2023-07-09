@@ -1,10 +1,15 @@
 import React from "react";
-import { HeaderTop } from "../components/HeaderTop";
+import { HeaderTop, HeaderMain } from "../components";
 
 // import { Outlet } from "react-router-dom";
 
 const MainLayout: React.FC = () => {
-  return <HeaderTop />;
+  return (
+    <>
+      <HeaderTop />
+      <HeaderMain />
+    </>
+  );
 };
 
 export default MainLayout;
