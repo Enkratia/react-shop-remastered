@@ -11,7 +11,7 @@ export const HeaderSearch: React.FC = () => {
       <input
         type="search"
         className={`${s.input} ${cs.input}`}
-        placeholder="Search for products..."
+        placeholder="++Search for products..."
       />
 
       <button className={s.btn} aria-label="Search information.">

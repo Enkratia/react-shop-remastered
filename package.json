@@ -32,11 +32,10 @@
     "stylelint-webpack-plugin": "^4.1.1",
     "terser-webpack-plugin": "^5.3.6",
     "typescript": "^5.1.6",
-    "webpack": "^5.75.0",
+    "webpack": "^5.88.1",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.15.1"
   },
-  "browserslist": "> 0.25%, not dead",
   "private": true,
   "name": "react-int-shop-remastered",
   "version": "1.0.0",
@@ -44,7 +43,7 @@
     "dev": "cross-env NODE_ENV=development webpack --mode development",
     "build": "cross-env NODE_ENV=production webpack --mode production",
     "watch": "cross-env NODE_ENV=development webpack --mode development --watch",
-    "start": "webpack-dev-server --mode development --open",
+    "start": "cross-env NODE_ENV=development webpack serve --hot only --open",
     "icons": "npx @svgr/cli src/assets/img/icons --out-dir src/iconComponents --icon --typescript"
   },
   "author": "",

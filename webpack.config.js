@@ -58,6 +58,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
+  target: "web",
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx", ".css", ".png", ".json"],
     alias: {
@@ -70,7 +71,6 @@ module.exports = {
     static: {
       directory: path.join(__dirname, "public"),
     },
-    compress: false,
     port: 4200,
   },
   mode: "development",
@@ -157,7 +157,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./index.html",
+      // template: "./index.html",
+      template: path.resolve(__dirname, "src", "index.html"),
       minify: {
         collapseWhitespace: isProd,
       },
